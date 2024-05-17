@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Library.Models.Book>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Library</h1>
+    <p>Welcome to the library web app</p>
+
+</div>
+
+<h3>Recommended</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Publication Year
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            
+            @if (item.IsRead == false)
+            {
+                
+                <tr>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublicationYear)
+                </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<h3>Read</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Publication Year
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            @if (item.IsRead != false)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublicationYear)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-controller="Books" asp-action="Create">Add recommendation</a>
+</p>
+
+
